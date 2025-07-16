@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+// Removed BrowserRouter, Routes, Route as we are now doing single-page scrolling
+import Navbar from './components/Navbar.js';
+import Footer from './components/Footer.js';
+import Home from './pages/Home.js';
+import About from './pages/About.js';
+import Projects from './pages/Projects.js';
+import Achievements from './pages/Achievements.js';
+import Contact from './pages/Contact.js';
+import './App.css'; // Import your main CSS file
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen app-background text-white flex flex-col">
+      <Navbar />
+      {/* Render all pages directly for a single-page scrolling experience */}
+      <Home />
+      <About />
+      <Projects />
+      <Achievements />
+      <Contact />
+      <Footer />
     </div>
   );
 }

@@ -1,38 +1,731 @@
-.App {
-  text-align: center;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Body and Root Styling */
+html, body, #root {
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Default Dark Mode Variables */
+:root {
+  --bg-primary: #1a202c; /* Dark background */
+  --text-primary: #ffffff; /* White text */
+  --text-secondary: #d1d5db; /* Gray-300 */
+  --highlight-color: #60a5fa; /* Blue-400 */
+  --highlight-light: #93c5fd; /* Blue-300 */
+  --button-primary-bg: #2563eb; /* Blue-600 */
+  --button-primary-hover-bg: #1d4ed8; /* Blue-700 */
+  --button-secondary-bg: #4a5568; /* Gray-700 */
+  --button-secondary-hover-bg: #2d3748; /* Gray-800 */
+  --border-color: #3b82f6; /* Blue-500 */
+  --card-bg: #2d3748; /* Gray-800 */
+  --footer-bg: #2d3748; /* Gray-800 */
+  --footer-text: #a0aec0; /* Gray-400 */
+  --navbar-bg-opacity: 0.7;
+  --navbar-base-bg-rgb: 26, 32, 44; /* RGB for dark background */
 }
 
-.App-header {
-  background-color: #282c34;
+/* Light Mode Variables */
+.light-mode {
+  --bg-primary: #ffffff; /* Light background */
+  --text-primary: #1a202c; /* Dark text */
+  --text-secondary: #4a5568; /* Gray-700 */
+  --highlight-color: #007bff; /* Brighter Blue */
+  --highlight-light: #66b3ff; /* Lighter Blue */
+  --button-primary-bg: #007bff;
+  --button-primary-hover-bg: #0056b3;
+  --button-secondary-bg: #e2e8f0; /* Light Gray */
+  --button-secondary-hover-bg: #cbd5e0; /* Lighter Gray */
+  --border-color: #007bff;
+  --card-bg: #f7fafc; /* Lightest Gray */
+  --footer-bg: #e2e8f0;
+  --footer-text: #4a5568;
+  --navbar-bg-opacity: 0.9;
+  --navbar-base-bg-rgb: 255, 255, 255; /* RGB for white background */
+}
+
+
+body {
+  font-family: 'Arial', sans-serif; /* Default font, you can change this */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-primary); /* Use variable */
+  color: var(--text-primary); /* Use variable */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* General Layout */
+.app-background {
+  /* Removed background-color here as canvas will handle it */
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Added for canvas positioning */
+  overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* Home Section Height - This ensures the Home section takes exactly one viewport height */
+.home-section-height {
+  height: 100vh; /* Set Home section to full viewport height */
+  overflow: hidden; /* Hide animation overflow within Home section */
+}
+
+/* Coding Animation Canvas */
+.coding-background {
+  /* Removed animation-related CSS properties */
+  display: none; /* Hide the canvas completely */
+}
+
+/* All other content should have a higher z-index to appear on top */
+.navbar-header,
+.page-section,
+.theme-toggle-container { /* Changed from resume-link-container */
+  position: relative; /* Ensure these elements are positioned relative to parent */
+  z-index: 10; /* Bring content to front */
+}
+
+
+.container-main {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.page-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 3rem; /* Equivalent to gap-12 */
+  flex-grow: 1;
+  background-color: var(--bg-primary); /* Use variable */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.App-link {
-  color: #61dafb;
+/* Scroll Reveal Animation */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.section-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Navbar Styling */
+.navbar-header {
+  max-width: 100%; /* Ensure it spans full width */
+  margin: 0 auto; /* Center it */
+  padding: 1.5rem 1rem; /* py-6 px-4 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Make it fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Use navbar-base-bg-rgb for the color part, and navbar-bg-opacity for alpha */
+  background-color: rgba(var(--navbar-base-bg-rgb), var(--navbar-bg-opacity));
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  z-index: 1000; /* Ensure it's on top of everything */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Navbar scrolled state */
+.navbar-header.scrolled {
+  background-color: var(--bg-primary); /* Solid background when scrolled */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow when scrolled */
+}
+
+
+/* Add padding to the main content to prevent it from being hidden behind the fixed navbar */
+/* This applies to all .page-section elements, including Home's main content */
+main.page-section {
+  padding-top: calc(4rem + 64px); /* Adjust based on navbar height (approx 64px for py-6) */
+}
+
+
+.navbar-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: bold;
+  color: var(--text-primary); /* Use variable */
+  border-radius: 0.5rem; /* rounded-md */
+  padding: 0.5rem; /* p-2 */
+}
+
+.navbar-nav {
+  display: none; /* hidden by default */
+  gap: 2rem; /* space-x-8 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .navbar-nav {
+    display: flex;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.nav-link {
+  color: var(--text-primary); /* Use variable */
+  text-decoration: none;
+  padding: 0.5rem; /* p-2 */
+  border-radius: 0.5rem; /* rounded-md */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--highlight-color); /* Use variable */
+}
+
+.mobile-menu-toggle {
+  display: block; /* block by default */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .mobile-menu-toggle {
+    display: none;
   }
+}
+
+.menu-button {
+  color: var(--text-primary); /* Use variable */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.menu-icon {
+  width: 1.5rem; /* w-6 */
+  height: 1.5rem; /* h-6 */
+}
+
+
+/* Hero Section - Image */
+.image-and-buttons-wrapper { /* New wrapper for image and buttons */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Space between image and buttons */
+}
+
+.image-container {
+  position: relative;
+  width: 16rem; /* w-64 */
+  height: 16rem; /* h-64 */
+  border-radius: 9999px; /* rounded-full */
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  border: 4px solid var(--border-color); /* Use variable */
+  flex-shrink: 0;
+  animation: float 3s ease-in-out infinite; /* Apply float animation to container */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .image-container {
+    width: 20rem; /* md:w-80 */
+    height: 20rem; /* md:h-80 */
+  }
+}
+
+.user-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* Keyframes for floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Social Icons Overlay */
+.social-icons-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  border-radius: 9999px; /* Match image container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem; /* Space between icons */
+  opacity: 0; /* Hidden by default */
+  visibility: hidden; /* Hidden for accessibility */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 20; /* Ensure it's above the image */
+}
+
+.social-icons-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.social-icon {
+  color: white; /* Default icon color */
+  font-size: 2rem; /* Icon size */
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+  color: var(--highlight-color); /* Highlight color on hover */
+}
+
+.social-icon svg {
+  width: 2rem; /* SVG icon size */
+  height: 2rem;
+}
+
+
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(55, 65, 81, 0.5); /* bg-gray-700 bg-opacity-50 */
+  color: #ffffff;
+  padding: 0.5rem; /* p-2 */
+  border-radius: 9999px; /* rounded-full */
+  z-index: 10;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arrow-button:hover {
+  background-color: rgba(55, 65, 81, 0.75); /* hover:bg-opacity-75 */
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+/* Button Group below Image */
+.button-group-below-image { /* New class for button group below image */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* gap-4 */
+  justify-content: center;
+  margin-top: 1rem; /* Space from image */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .button-group-below-image {
+    flex-direction: row;
+  }
+}
+
+/* Hero Section - Text Content */
+.text-content {
+  text-align: center;
+  max-width: 48rem; /* max-w-2xl */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .text-content {
+    text-align: left;
+  }
+}
+
+.greeting {
+  font-size: 1.25rem; /* text-xl */
+  color: var(--highlight-light); /* Use variable */
+  margin-bottom: 0.5rem; /* mb-2 */
+  border-radius: 0.25rem; /* rounded-md */
+  padding: 0.25rem; /* p-1 */
+}
+
+.main-heading {
+  font-size: 3rem; /* text-5xl */
+  font-weight: 800; /* font-extrabold */
+  line-height: 1.25; /* leading-tight */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .main-heading {
+    font-size: 3.75rem; /* md:text-6xl */
+  }
+}
+
+.highlight-text-blue { /* New class for blue highlight */
+  color: var(--highlight-color); /* Use variable */
+}
+
+.blinking-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.sub-text {
+  font-size: 1.125rem; /* text-lg */
+  color: var(--text-secondary); /* Use variable */
+  margin-bottom: 2rem; /* mb-8 */
+  border-radius: 0.25rem; /* rounded-md */
+  padding: 0.25rem; /* p-1 */
+}
+
+/* Buttons */
+.button {
+  font-weight: bold;
+  padding: 0.75rem 2rem; /* py-3 px-8 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.primary-button-blue { /* New class for primary blue button */
+  background-color: var(--button-primary-bg); /* Use variable */
+  color: #ffffff;
+}
+
+.primary-button-blue:hover {
+  background-color: var(--button-primary-hover-bg); /* Use variable */
+}
+
+.secondary-button-blue { /* New class for secondary blue button */
+  background-color: var(--button-secondary-bg); /* Use variable */
+  color: var(--text-primary); /* Use variable */
+  border: 1px solid var(--button-secondary-hover-bg); /* Use variable */
+}
+
+.secondary-button-blue:hover {
+  background-color: var(--button-secondary-hover-bg); /* Use variable */
+}
+
+/* Theme Toggle Button Container (replaces Resume Link at bottom right) */
+.theme-toggle-container {
+  position: fixed;
+  bottom: 1rem; /* bottom-4 */
+  right: 1rem; /* right-4 */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+.theme-toggle-button {
+  background-color: var(--button-primary-bg); /* Use variable */
+  color: #ffffff; /* Icon color */
+  padding: 0.75rem; /* p-3 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--button-primary-hover-bg); /* Use variable */
+  transform: scale(1.05);
+}
+
+.icon-svg {
+  width: 1.25rem; /* w-5 */
+  height: 1.25rem; /* h-5 */
+}
+
+/* Footer Styling */
+.app-footer {
+  background-color: var(--footer-bg); /* Use variable */
+  padding: 1rem 0; /* py-4 */
+  text-align: center;
+  color: var(--footer-text); /* Use variable */
+  font-size: 0.875rem; /* text-sm */
+  border-top-left-radius: 0.5rem; /* rounded-t-lg */
+  border-top-right-radius: 0.5rem; /* rounded-t-lg */
+}
+
+.heart-icon {
+  color: #ef4444; /* text-red-500 */
+}
+
+
+/* General Section Headings */
+.section-heading {
+  font-size: 2.5rem; /* Equivalent to text-4xl */
+  font-weight: bold;
+  margin-bottom: 2rem; /* mb-8 */
+  color: var(--text-primary); /* Use variable */
+}
+
+.sub-section-heading {
+  font-size: 1.75rem; /* Equivalent to text-3xl */
+  font-weight: bold;
+  margin-top: 2.5rem; /* mt-10 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  color: var(--text-primary); /* Use variable */
+}
+
+.section-text {
+  font-size: 1.125rem; /* text-lg */
+  color: var(--text-secondary); /* Use variable */
+  margin-bottom: 1rem; /* mb-4 */
+  max-width: 800px; /* max-w-3xl */
+  line-height: 1.75;
+}
+
+/* Skills List */
+.skills-category-container h4 { /* Style for category headings */
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold;
+  color: var(--highlight-color);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.skills-grid { /* Grid for skill cards */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+  gap: 1rem; /* Space between cards */
+  max-width: 800px;
+  width: 100%;
+}
+
+.skill-card {
+  background-color: var(--card-bg); /* Use variable */
+  padding: 1rem;
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.skill-icon {
+  font-size: 2.5rem; /* Larger font size for emojis */
+  margin-bottom: 0.5rem;
+  color: var(--highlight-color); /* Color for SVG icons */
+}
+
+.skill-icon svg { /* Style for SVG icons */
+  width: 2.5rem; /* w-10 */
+  height: 2.5rem;
+  color: var(--highlight-color); /* Ensures SVG color changes with theme */
+}
+
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* gap-8 */
+  width: 100%;
+  max-width: 1200px;
+}
+
+.project-card {
+  background-color: var(--card-bg); /* Use variable */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-title-blue { /* New class for blue project title */
+  color: var(--highlight-color); /* Use variable */
+  font-size: 1.5rem; /* text-xl */
+  font-weight: bold;
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.project-description {
+  font-size: 1rem;
+  color: var(--text-secondary); /* Use variable */
+  margin-bottom: 1rem; /* mb-4 */
+  flex-grow: 1;
+}
+
+.project-tech {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--footer-text); /* Use variable (gray-400) */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem; /* gap-4 */
+  margin-top: 1rem;
+}
+
+.project-link-blue { /* New class for blue project link */
+  background-color: var(--button-primary-bg); /* Use variable */
+  color: #ffffff;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.project-link-blue:hover {
+  background-color: var(--button-primary-hover-bg); /* Use variable */
+}
+
+/* Achievements List */
+.achievements-list {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* gap-6 */
+}
+
+.achievement-item {
+  background-color: var(--card-bg); /* Use variable */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  position: relative; /* Added for absolute positioning of icon */
+}
+
+.achievement-link-card { /* Style for the clickable card content */
+  text-decoration: none;
+  color: inherit; /* Inherit text color from parent */
+  display: block; /* Make the entire card content clickable */
+  padding-right: 2.5rem; /* Make space for the icon */
+}
+
+.external-link-icon {
+  position: absolute;
+  top: 1rem; /* Adjust as needed */
+  right: 1rem; /* Adjust as needed */
+  color: var(--highlight-color); /* Icon color */
+  transition: transform 0.2s ease-in-out;
+}
+
+.achievement-link-card:hover .external-link-icon {
+  transform: scale(1.1); /* Slight scale on hover */
+}
+
+
+.achievement-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold;
+  color: var(--highlight-color); /* Use variable */
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.achievement-type {
+  font-size: 0.875rem; /* text-sm */
+  color: var(--footer-text); /* Use variable */
+  margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.achievement-description {
+  font-size: 1rem;
+  color: var(--text-secondary); /* Use variable */
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 2rem; /* mt-8 */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* gap-4 */
+  font-size: 1.125rem; /* text-lg */
+  color: var(--text-secondary); /* Use variable */
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items for contact info */
+  gap: 0.5rem;
+}
+
+.contact-link {
+  color: var(--highlight-color); /* Use variable */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--highlight-light); /* Use variable */
+  text-decoration: underline;
+}
+
+/* Contact Form (Optional styles if you add the form) */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+.form-input, .form-textarea {
+  background-color: var(--card-bg); /* Use variable */
+  border: 1px solid var(--button-secondary-hover-bg); /* Use variable */
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  color: var(--text-primary); /* Use variable */
+  font-size: 1rem;
+  outline: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--footer-text); /* Use variable */
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--border-color); /* Use variable */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Fixed blue shadow for focus */
 }
