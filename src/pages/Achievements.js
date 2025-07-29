@@ -34,14 +34,12 @@ function Achievements() {
       type: "Certification",
       title: "Problem Solving (HackerRank)",
       description: "Certified in Problem Solving by HackerRank, demonstrating strong algorithmic thinking and coding skills.",
-      date: "Date of Certification", // Add actual date
       link: "https://www.hackerrank.com/certificates/iframe/999f37e2591a" // Placeholder link
     },
     {
       type: "Certification",
       title: "Java (HackerRank)",
       description: "Certified in Java by HackerRank, validating proficiency in Java programming language fundamentals and advanced concepts.",
-      date: "Date of Certification", // Add actual date
       link: "https://www.hackerrank.com/certificates/iframe/3ea35e47b29a" // Placeholder link
     },
   ];
@@ -55,7 +53,7 @@ function Achievements() {
             {item.link ? (
               <a href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-link-card"> {/* New class for card link */}
                 <h3 className="achievement-title">{item.title}</h3>
-                <p className="achievement-type">{item.type} | {item.date}</p>
+                <p className="achievement-type">{item.type}</p>
                 <p className="achievement-description">{item.description}</p>
                 <span className="external-link-icon"> {/* Icon container */}
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-external-link">
@@ -69,7 +67,7 @@ function Achievements() {
               // Fallback if no link is provided
               <>
                 <h3 className="achievement-title">{item.title}</h3>
-                <p className="achievement-type">{item.type} | {item.date}</p>
+                <p className="achievement-type">{item.type}</p>
                 <p className="achievement-description">{item.description}</p>
               </>
             )}
