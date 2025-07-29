@@ -34,14 +34,12 @@ function Achievements() {
       type: "Certification",
       title: "Problem Solving (HackerRank)",
       description: "Certified in Problem Solving by HackerRank, demonstrating strong algorithmic thinking and coding skills.",
-      date: "Date of Certification", // Add actual date
       link: "https://www.hackerrank.com/certificates/iframe/999f37e2591a" // Placeholder link
     },
     {
       type: "Certification",
       title: "Java (HackerRank)",
       description: "Certified in Java by HackerRank, validating proficiency in Java programming language fundamentals and advanced concepts.",
-      date: "Date of Certification", // Add actual date
       link: "https://www.hackerrank.com/certificates/iframe/3ea35e47b29a" // Placeholder link
     },
   ];
