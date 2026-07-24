@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# ⚡ Rahul Soni - High-Performance Developer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the official portfolio website of **Rahul Soni**, Electronics and Computer Engineering (ECE) student at **Thapar Institute of Engineering and Technology**.
 
-## Available Scripts
+This repository contains a modern, high-performance, responsive React developer portfolio featuring glassmorphic UI design, dual Light/Dark theme modes, interactive canvas particles, and detailed project showcases.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Dark & Light Theme Mode**: Built-in instant theme switcher with persistent user preference (`localStorage`).
+- **Interactive Ambient Particle Background**: Dynamic HTML5 canvas particle background with interactive cursor spotlight tracking.
+- **Hero Section**:
+  - Live animated typewriter effect highlighting technical roles.
+  - Glowing profile picture ring with live status indicator (*Available for Opportunities*).
+  - Direct resume access, GitHub, LinkedIn, and social link badges.
+- **About & Technical Skills**:
+  - Educational profile at Thapar Institute of Engineering and Technology.
+  - Categorized tech stack grid with vector technology icons (Java, C++, JavaScript, Node.js, React.js, MongoDB, Socket.io, Git, VS Code, Postman, IntelliJ).
+- **Featured Projects Showcase**:
+  - **workonmeet**: Real-time collaborative video meeting & workspace platform built with WebRTC, React, Node.js, and Socket.io. Includes live production demo link.
+  - **Multi-Model Web Server**: High-concurrency Java web server evaluating Single-threaded, Multi-threaded, and Thread-Pool performance metrics under 1000+ simultaneous connections.
+  - **MedIntel-AI**: AI-driven healthcare intelligence and diagnostic insights dashboard integrating machine learning models with Python & REST APIs.
+  - Interactive project detail glass modal showcasing key architecture highlights, technical tags, and source links.
+- **Achievements & Certifications**: Verified credentials from HackerRank for *Problem Solving* and *Java Programming*.
+- **Interactive Contact Section**: 1-click email & phone copy-to-clipboard buttons with toast feedback, direct contact form, and social links.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**: React 19, JavaScript (ES6+), HTML5, Vanilla CSS3 (Custom Glassmorphic System)
+- **Animations & Icons**: Framer Motion, Lucide React
+- **Build Tool**: React Scripts / Webpack
+- **Deployment**: Vercel
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Local Setup & Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/rahulsoni5670/my-portfolio.git
+   cd my-portfolio
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. **Start local development server**:
+   ```bash
+   npm start
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📦 Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This application is deployed live on **Vercel**. To deploy your own instance using Vercel CLI:
 
-## Learn More
+```bash
+npx vercel --prod
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 👤 Author
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Rahul Soni**
+- **Email**: rahulsoni5670@gmail.com
+- **LinkedIn**: [linkedin.com/in/rahul-soni-8b281728b/](https://www.linkedin.com/in/rahul-soni-8b281728b/)
+- **GitHub**: [github.com/rahulsoni5670](https://github.com/rahulsoni5670)
+- **Resume**: [313941981030506496.hello.cv/](https://313941981030506496.hello.cv/)
