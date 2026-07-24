@@ -1,7 +1,5 @@
 # ⚡ Rahul Soni - High-Performance Developer Portfolio
 
-🔗 **Live Website**: [https://my-portfolio-inky-kappa-60.vercel.app](https://my-portfolio-inky-kappa-60.vercel.app)
-
 Welcome to the official portfolio website of **Rahul Soni**, Electronics and Computer Engineering (ECE) student at **Thapar Institute of Engineering and Technology**.
 
 This repository contains a modern, high-performance, responsive React developer portfolio featuring glassmorphic UI design, dual Light/Dark theme modes, interactive canvas particles, and detailed project showcases.
