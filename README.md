@@ -1,8 +1,17 @@
 # ⚡ Rahul Soni - High-Performance Developer Portfolio
 
+🔗 **Live Website**: [https://my-portfolio-inky-kappa-60.vercel.app](https://my-portfolio-inky-kappa-60.vercel.app)
+
 Welcome to the official portfolio website of **Rahul Soni**, Electronics and Computer Engineering (ECE) student at **Thapar Institute of Engineering and Technology**.
 
 This repository contains a modern, high-performance, responsive React developer portfolio featuring glassmorphic UI design, dual Light/Dark theme modes, interactive canvas particles, and detailed project showcases.
+
+---
+
+## 🌐 Live Demo
+
+Visit the live portfolio deployed on Vercel:
+👉 **[https://my-portfolio-inky-kappa-60.vercel.app](https://my-portfolio-inky-kappa-60.vercel.app)**
 
 ---
 
@@ -18,7 +27,7 @@ This repository contains a modern, high-performance, responsive React developer 
   - Educational profile at Thapar Institute of Engineering and Technology.
   - Categorized tech stack grid with vector technology icons (Java, C++, JavaScript, Node.js, React.js, MongoDB, Socket.io, Git, VS Code, Postman, IntelliJ).
 - **Featured Projects Showcase**:
-  - **workonmeet**: Real-time collaborative video meeting & workspace platform built with WebRTC, React, Node.js, and Socket.io. Includes live production demo link.
+  - **workonmeet**: Real-time collaborative video meeting & workspace platform built with WebRTC, React, Node.js, and Socket.io. Includes live production demo link (`https://workonmeet.vercel.app/`).
   - **Multi-Model Web Server**: High-concurrency Java web server evaluating Single-threaded, Multi-threaded, and Thread-Pool performance metrics under 1000+ simultaneous connections.
   - **MedIntel-AI**: AI-driven healthcare intelligence and diagnostic insights dashboard integrating machine learning models with Python & REST APIs.
   - Interactive project detail glass modal showcasing key architecture highlights, technical tags, and source links.
@@ -64,8 +73,10 @@ This repository contains a modern, high-performance, responsive React developer 
 
 ## 📦 Deployment
 
-This application is deployed live on **Vercel**. To deploy your own instance using Vercel CLI:
+The application is deployed live on **Vercel**:
+- **Production URL**: [https://my-portfolio-inky-kappa-60.vercel.app](https://my-portfolio-inky-kappa-60.vercel.app)
 
+To deploy your own instance using Vercel CLI:
 ```bash
 npx vercel --prod
 ```
@@ -75,6 +86,7 @@ npx vercel --prod
 ## 👤 Author
 
 **Rahul Soni**
+- **Website**: [https://my-portfolio-inky-kappa-60.vercel.app](https://my-portfolio-inky-kappa-60.vercel.app)
 - **Email**: rahulsoni5670@gmail.com
 - **LinkedIn**: [linkedin.com/in/rahul-soni-8b281728b/](https://www.linkedin.com/in/rahul-soni-8b281728b/)
 - **GitHub**: [github.com/rahulsoni5670](https://github.com/rahulsoni5670)
