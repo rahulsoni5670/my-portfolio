@@ -85,7 +85,7 @@ function About() {
               </div>
             </div>
             <p className="about-text">
-              I am an <strong>Electronics and Computer Engineering (ECE)</strong> student at TIET. My academic background combines deep hardware-software system design with modern software engineering principles.
+              I am an <strong>Electronics and Computer Engineering (ENC)</strong> student at TIET. My academic background combines deep hardware-software system design with modern software engineering principles.
             </p>
             <p className="about-text">
               I am driven by a passion for building multi-threaded web servers, real-time web applications using Socket.io and Node.js, and object-oriented Java solutions. I thrive in fast-paced environments where I can build impactful systems.

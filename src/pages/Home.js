@@ -154,8 +154,8 @@ function Home() {
             <div className="hero-stat-card">
               <Cpu size={20} className="stat-icon" />
               <div className="stat-info">
-                <span className="stat-value">TIET '26</span>
-                <span className="stat-label">ECE Engineering</span>
+                <span className="stat-value">TIET '27</span>
+                <span className="stat-label">ENC Engineering</span>
               </div>
             </div>
           </div>
