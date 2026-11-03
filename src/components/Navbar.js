@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, Sparkles } from 'lucide-react';
 import '../App.css';
 
-function Navbar({ theme, toggleTheme }) {
+function Navbar({ theme, toggleTheme, onOpenRecruiterModal }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // Section intersection detection
       const sections = ['home', 'about', 'projects', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
@@ -38,9 +37,9 @@ function Navbar({ theme, toggleTheme }) {
 
   const navItems = [
     { label: 'Home', href: '#home', id: 'home' },
-    { label: 'About & Skills', href: '#about', id: 'about' },
+    { label: 'Engineering & Skills', href: '#about', id: 'about' },
     { label: 'Projects', href: '#projects', id: 'projects' },
-    { label: 'Achievements', href: '#achievements', id: 'achievements' },
+    { label: 'Certifications', href: '#achievements', id: 'achievements' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
@@ -68,9 +67,19 @@ function Navbar({ theme, toggleTheme }) {
           ))}
         </nav>
 
-        {/* CTA & Theme Toggle & Mobile Toggle */}
+        {/* CTA & Actions */}
         <div className="navbar-actions">
-          {/* Theme Switcher Button */}
+          {/* Recruiter 30-Sec Fast-Track Button */}
+          <button
+            onClick={onOpenRecruiterModal}
+            className="navbar-recruiter-pill font-mono"
+            title="Open 30-second Executive Summary"
+          >
+            <Sparkles size={14} className="text-amber-400" />
+            <span>Recruiter Quick-View</span>
+          </button>
+
+          {/* Theme Switcher */}
           <button
             onClick={toggleTheme}
             className="theme-toggle-nav-btn"
@@ -78,12 +87,13 @@ function Navbar({ theme, toggleTheme }) {
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? (
-              <Sun size={18} className="text-amber-400" />
+              <Sun size={17} className="text-amber-400" />
             ) : (
-              <Moon size={18} className="text-indigo-600" />
+              <Moon size={17} className="text-indigo-600" />
             )}
           </button>
 
+          {/* GitHub Icon */}
           <a
             href="https://github.com/rahulsoni5670"
             target="_blank"
@@ -97,12 +107,13 @@ function Navbar({ theme, toggleTheme }) {
             <span className="hidden-mobile">GitHub</span>
           </a>
 
+          {/* Mobile Menu Toggle */}
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               {mobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -116,6 +127,17 @@ function Navbar({ theme, toggleTheme }) {
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="mobile-menu-drawer">
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenRecruiterModal();
+            }}
+            className="mobile-recruiter-btn font-mono"
+          >
+            <Sparkles size={14} className="text-amber-400" />
+            <span>Recruiter Quick-View (30s Read)</span>
+          </button>
+
           {navItems.map((item) => (
             <a
               key={item.id}

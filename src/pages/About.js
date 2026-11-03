@@ -1,178 +1,252 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { User, GraduationCap, Code, Terminal, Wrench, CheckCircle2, Sparkles } from 'lucide-react';
+import { User, Cpu, Server, GraduationCap, CheckCircle2, ShieldCheck, Layers, Terminal, Sparkles, Network } from 'lucide-react';
 import { getTechIcon } from '../components/TechIcons';
 import '../App.css';
 
-const skillCategories = [
+const TECH_MATRIX = [
   {
-    title: "Programming Languages",
-    icon: <Code size={20} style={{ color: '#a78bfa' }} />,
-    skills: [
-      { name: 'C/C++', level: 'Advanced', pct: 88 },
-      { name: 'Java', level: 'Advanced', pct: 90 },
-      { name: 'JavaScript', level: 'Intermediate', pct: 75 },
-      { name: 'HTML/CSS', level: 'Advanced', pct: 92 },
+    category: "Core Languages",
+    icon: <Terminal size={18} className="text-indigo-400" />,
+    items: [
+      { name: "Java", detail: "OOP, Collections, Multi-Threading, Concurrency, Socket IO" },
+      { name: "C/C++", detail: "Memory Management, Pointers, Algorithmic Problem Solving" },
+      { name: "JavaScript", detail: "ES6+, Async/Await, WebRTC APIs, Event Loop, DOM" },
+      { name: "HTML/CSS", detail: "Semantic Web, Modern CSS3 Flexbox/Grid, Responsive Design" }
     ]
   },
   {
-    title: "Technologies & Frameworks",
-    icon: <Terminal size={20} style={{ color: '#00d4ff' }} />,
-    skills: [
-      { name: 'NodeJs', level: 'Intermediate', pct: 78 },
-      { name: 'ReactJs', level: 'Intermediate', pct: 80 },
-      { name: 'MongoDB', level: 'Intermediate', pct: 72 },
-      { name: 'Socket.io', level: 'Intermediate', pct: 82 },
+    category: "Backend, Sockets & Systems",
+    icon: <Server size={18} className="text-cyan-400" />,
+    items: [
+      { name: "NodeJs", detail: "Event-driven asynchronous backend services & REST endpoints" },
+      { name: "Socket.io", detail: "Bi-directional real-time communication & room broadcasting" },
+      { name: "WebRTC", detail: "Peer-to-peer real-time audio, video streaming & data channels" },
+      { name: "Java Sockets", detail: "ExecutorService thread pools, non-blocking network socket pools" }
     ]
   },
   {
-    title: "Developer Tools",
-    icon: <Wrench size={20} style={{ color: '#f0abfc' }} />,
-    skills: [
-      { name: 'VS Code', level: 'Proficient', pct: 95 },
-      { name: 'Git', level: 'Proficient', pct: 88 },
-      { name: 'Github', level: 'Proficient', pct: 90 },
-      { name: 'Postman', level: 'Proficient', pct: 85 },
-      { name: 'IntelliJ', level: 'Proficient', pct: 82 },
+    category: "Frontend & Full-Stack",
+    icon: <Layers size={18} className="text-purple-400" />,
+    items: [
+      { name: "ReactJs", detail: "Component lifecycles, hooks, single-page state management" },
+      { name: "MongoDB", detail: "NoSQL document stores, aggregation pipelines, schema modeling" },
+      { name: "Git", detail: "Distributed version control, branching workflows, PR management" },
+      { name: "Github", detail: "Open-source collaboration, continuous deployment pipelines" }
+    ]
+  },
+  {
+    category: "Developer Tools & Platforms",
+    icon: <Cpu size={18} className="text-emerald-400" />,
+    items: [
+      { name: "IntelliJ", detail: "Enterprise Java profiling, memory debugging & JVM optimizations" },
+      { name: "VS Code", detail: "Full-stack development, linting, extensions & debugging" },
+      { name: "Postman", detail: "API endpoint mocking, automated testing & payload validation" }
     ]
   }
 ];
 
-const softSkills = [
-  "Communication & Presentation", "Critical Thinking", "Decision Making",
-  "Leadership", "Problem Solving", "Adaptability", "Team Collaboration"
+const SOFT_SKILLS = [
+  "Algorithmic Thinking & Decomposition",
+  "High-Concurrency System Design",
+  "Rapid Technical Adaptability",
+  "Collaborative Team Code Reviews",
+  "Clear Technical Communication",
+  "Ownership & Independent Execution"
 ];
 
-function SkillProgressBar({ skill, animate }) {
-  return (
-    <div className="skill-progress-item">
-      <div className="skill-progress-header">
-        <span className="skill-progress-name">
-          {getTechIcon(skill.name)}
-          {skill.name}
-        </span>
-        <span className="skill-progress-pct">{animate ? skill.pct : 0}%</span>
-      </div>
-      <div className="skill-progress-track">
-        <div
-          className="skill-progress-fill"
-          style={{ width: animate ? `${skill.pct}%` : '0%' }}
-        />
-      </div>
-    </div>
-  );
-}
-
 function About() {
-  const [animated, setAnimated] = useState(false);
-  const skillsRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setAnimated(true);
-    }, { threshold: 0.2 });
-    if (skillsRef.current) observer.observe(skillsRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section id="about" className="page-section">
       <div className="container-main">
+        {/* Section Header */}
         <div className="section-header-center">
-          <div className="section-badge">
-            <User size={14} /><span>Background & Experience</span>
+          <div className="section-badge font-mono">
+            <User size={13} />
+            <span>ENGINEERING FOUNDATION &amp; SKILLS</span>
           </div>
           <h2 className="section-heading">
-            About <span className="gradient-text">Me</span>
+            Technical <span className="gradient-text">Competence</span>
           </h2>
           <div className="section-divider"></div>
           <p className="section-subtitle">
-            Passionate Engineering student dedicated to solving real-world problems through clean code, scalable server architecture, and efficient algorithms.
+            A comprehensive breakdown of my systems architecture background, categorized technical proficiencies, and academic rigor.
           </p>
         </div>
 
-        {/* Bio & Education Grid */}
-        <div className="about-grid">
+        {/* Executive Bento Grid */}
+        <div className="bento-grid-container">
+          {/* Bento Card 1: Systems Engineering Architecture (Large) */}
           <motion.div
-            className="glass-card about-card"
-            initial={{ opacity: 0, y: 20 }}
+            className="bento-card bento-card-large glass-card"
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="card-header-row">
-              <div className="icon-avatar indigo"><GraduationCap size={24} /></div>
+            <div className="bento-header-row">
+              <div className="bento-icon-box indigo">
+                <Network size={22} />
+              </div>
               <div>
-                <h3 className="card-title">Education & Profile</h3>
-                <span className="card-subtitle">Thapar Institute of Engineering and Technology</span>
+                <span className="bento-tag font-mono">CORE SYSTEM EXPERTISE</span>
+                <h3 className="bento-title">High-Concurrency Network Architecture</h3>
               </div>
             </div>
-            <p className="about-text">
-              I am an <strong>Electronics and Computer Engineering (ENC)</strong> student at TIET. My academic background combines deep hardware-software system design with modern software engineering principles.
+
+            <p className="bento-text">
+              My engineering focuses heavily on the intersection of low-level networking, thread safety, and scalable web services. I specialize in designing systems that prevent memory thrashing and thread exhaustion when handling thousands of simultaneous TCP connections.
             </p>
-            <p className="about-text">
-              I am driven by a passion for building multi-threaded web servers, real-time web applications using Socket.io and Node.js, and object-oriented Java solutions.
-            </p>
-            <div className="education-timeline">
-              <div className="edu-timeline-item">
-                <div className="edu-degree">B.Tech — Electronics & Computer Engineering</div>
-                <div className="edu-institute">Thapar Institute of Engineering & Technology</div>
-                <div className="edu-year">2023 – 2027 (Expected)</div>
+
+            {/* Architecture Flow Diagram */}
+            <div className="bento-architecture-diagram font-mono">
+              <div className="arch-node">
+                <span className="arch-node-badge">1,000+ Inbound Sockets</span>
+                <span className="arch-node-sub">Concurrent Clients</span>
               </div>
-              <div className="edu-timeline-item">
-                <div className="edu-degree">Higher Secondary Education (12th)</div>
-                <div className="edu-institute">PCM with Computer Science</div>
-                <div className="edu-year">Graduated 2023</div>
+              <div className="arch-connector">➔</div>
+              <div className="arch-node active">
+                <span className="arch-node-badge highlight">Java ExecutorService</span>
+                <span className="arch-node-sub">ThreadPool Pool Limit</span>
+              </div>
+              <div className="arch-connector">➔</div>
+              <div className="arch-node">
+                <span className="arch-node-badge">Non-blocking Dispatch</span>
+                <span className="arch-node-sub">Zero Resource Leak</span>
+              </div>
+            </div>
+
+            <ul className="bento-bullet-list">
+              <li>
+                <CheckCircle2 size={16} className="text-emerald-400" />
+                <span>Benchmarked Single-Threaded vs Multi-Threaded vs ThreadPool models under 1,000+ socket loads.</span>
+              </li>
+              <li>
+                <CheckCircle2 size={16} className="text-emerald-400" />
+                <span>WebRTC Mesh topology with dynamic STUN/TURN traversal for low-latency peer media streaming.</span>
+              </li>
+              <li>
+                <CheckCircle2 size={16} className="text-emerald-400" />
+                <span>Robust Object-Oriented Design in Java enforcing strict memory safety and exception handling.</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Bento Card 2: Academic Profile @ TIET */}
+          <motion.div
+            className="bento-card bento-card-medium glass-card"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="bento-header-row">
+              <div className="bento-icon-box cyan">
+                <GraduationCap size={22} />
+              </div>
+              <div>
+                <span className="bento-tag font-mono">ACADEMIC RIGOR</span>
+                <h3 className="bento-title">Thapar Institute (TIET)</h3>
+              </div>
+            </div>
+
+            <div className="tiet-academic-card">
+              <div className="tiet-degree-line">
+                <strong>B.Tech in Electronics and Computer Engineering</strong>
+              </div>
+              <div className="tiet-batch-line font-mono text-cyan">
+                Class of 2023 – 2027 • Patiala, Punjab
+              </div>
+              <p className="tiet-desc">
+                Rigorous curriculum bridging computer architecture, operating system internals, microprocessors, and modern software engineering.
+              </p>
+
+              <div className="coursework-box font-mono">
+                <span className="coursework-title">RELEVANT COURSEWORK:</span>
+                <div className="course-tags">
+                  <span className="c-tag">Data Structures &amp; Algorithms</span>
+                  <span className="c-tag">Operating Systems</span>
+                  <span className="c-tag">Computer Networks</span>
+                  <span className="c-tag">Object-Oriented Programming (Java)</span>
+                  <span className="c-tag">DBMS</span>
+                </div>
               </div>
             </div>
           </motion.div>
 
+          {/* Bento Card 3: Verified Industry Certifications */}
           <motion.div
-            className="glass-card about-card highlight-border"
-            initial={{ opacity: 0, y: 20 }}
+            className="bento-card bento-card-small glass-card"
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <div className="card-header-row">
-              <div className="icon-avatar purple"><Sparkles size={24} /></div>
+            <div className="bento-header-row">
+              <div className="bento-icon-box purple">
+                <ShieldCheck size={22} />
+              </div>
               <div>
-                <h3 className="card-title">Core Competencies</h3>
-                <span className="card-subtitle">Engineering Mindset</span>
+                <span className="bento-tag font-mono">INDUSTRY BENCHMARK</span>
+                <h3 className="bento-title">HackerRank Verified</h3>
               </div>
             </div>
-            <ul className="competency-list">
-              <li><CheckCircle2 size={18} style={{ color: '#34d399', flexShrink: 0 }} /><span>Object-Oriented Design & Data Structures (Java, C++)</span></li>
-              <li><CheckCircle2 size={18} style={{ color: '#34d399', flexShrink: 0 }} /><span>Full-Stack Web Development (Node.js, React.js, Express, MongoDB)</span></li>
-              <li><CheckCircle2 size={18} style={{ color: '#34d399', flexShrink: 0 }} /><span>Real-Time Socket Communication & Multi-Threaded Concurrency</span></li>
-              <li><CheckCircle2 size={18} style={{ color: '#34d399', flexShrink: 0 }} /><span>System Architecture, Socket Programming & File I/O</span></li>
-              <li><CheckCircle2 size={18} style={{ color: '#34d399', flexShrink: 0 }} /><span>RESTful API Design & Microservices Patterns</span></li>
-            </ul>
+
+            <div className="hackerrank-cert-list font-mono">
+              <div className="hr-cert-item">
+                <div className="hr-cert-header">
+                  <span className="cert-badge-gold">★ ADVANCED</span>
+                  <span className="cert-name">Problem Solving</span>
+                </div>
+                <p className="cert-meta">Validates space-time complexity mastery &amp; competitive algorithmic thinking.</p>
+              </div>
+
+              <div className="hr-cert-item">
+                <div className="hr-cert-header">
+                  <span className="cert-badge-gold">★ CERTIFIED</span>
+                  <span className="cert-name">Java Programming</span>
+                </div>
+                <p className="cert-meta">Demonstrates OOP design, Collections framework &amp; concurrency mastery.</p>
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {/* Technical Skills with Progress Bars */}
-        <div className="skills-section-wrapper" ref={skillsRef}>
+        {/* Technical Stack Matrix: Categorized with Real Context */}
+        <div className="tech-stack-section">
           <h3 className="sub-section-title">
-            Technical <span className="gradient-text">Skills</span>
+            Categorized <span className="gradient-text">Tech Stack Matrix</span>
           </h3>
-          <div className="skill-categories-grid">
-            {skillCategories.map((category, idx) => (
+          <p className="text-center text-muted font-mono text-sm" style={{ marginBottom: '2.5rem' }}>
+            Structured by practical production and architectural depth, not arbitrary percentages
+          </p>
+
+          <div className="tech-matrix-grid">
+            {TECH_MATRIX.map((cat, idx) => (
               <motion.div
                 key={idx}
-                className="glass-card skill-category-card"
+                className="glass-card tech-matrix-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
               >
-                <div className="category-header">
-                  {category.icon}
-                  <h4>{category.title}</h4>
+                <div className="tech-matrix-header">
+                  {cat.icon}
+                  <h4>{cat.category}</h4>
                 </div>
-                <div className="skill-progress-bar-wrapper">
-                  {category.skills.map((skill, sIdx) => (
-                    <SkillProgressBar key={sIdx} skill={skill} animate={animated} />
+
+                <div className="tech-matrix-list">
+                  {cat.items.map((item, iIdx) => (
+                    <div key={iIdx} className="tech-matrix-item">
+                      <div className="tech-matrix-name-row">
+                        <div className="tech-matrix-icon">
+                          {getTechIcon(item.name)}
+                        </div>
+                        <span className="tech-matrix-name font-mono">{item.name}</span>
+                      </div>
+                      <span className="tech-matrix-detail">{item.detail}</span>
+                    </div>
                   ))}
                 </div>
               </motion.div>
@@ -180,21 +254,22 @@ function About() {
           </div>
         </div>
 
-        {/* Soft Skills */}
-        <div className="soft-skills-wrapper">
+        {/* Professional & Soft Competencies */}
+        <div className="soft-skills-wrapper mt-12">
           <h3 className="sub-section-title text-center">
-            Professional & <span className="gradient-text-cyan">Soft Skills</span>
+            Engineering Principles &amp; <span className="gradient-text-cyan">Professional Traits</span>
           </h3>
           <div className="soft-skills-container">
-            {softSkills.map((skill, idx) => (
-              <motion.span
+            {SOFT_SKILLS.map((skill, idx) => (
+              <motion.div
                 key={idx}
-                className="soft-skill-badge"
-                whileHover={{ scale: 1.06 }}
-                transition={{ type: "spring", stiffness: 350 }}
+                className="soft-skill-badge font-mono"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                ✦ {skill}
-              </motion.span>
+                <Sparkles size={13} className="text-cyan-400 inline mr-1" />
+                <span>{skill}</span>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -1,18 +1,36 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FolderGit2, Cpu, Server, ExternalLink, CheckCircle, X, Layers, Code, Sparkles } from 'lucide-react';
+import { FolderGit2, Cpu, Server, ExternalLink, CheckCircle, X, Layers, Code, Sparkles, Activity } from 'lucide-react';
 import '../App.css';
 
 const projectsData = [
   {
     id: 'workonmeet',
     title: "workonmeet",
-    category: "Full-Stack Web App",
-    bannerGradient: "from-blue-600 via-indigo-600 to-purple-600",
-    icon: <Server size={28} className="text-indigo-400" />,
-    shortDesc: "Real-time collaborative video meeting & workspace platform for instant video calls, room chats, and screen sharing.",
-    fullDesc: "Engineered workonmeet, a modern web application enabling low-latency video meetings, real-time messaging, screen sharing, and collaborative workspace tools. Implemented WebRTC peer-to-peer streaming connections, dynamic meeting room link generation, and active participant state management.",
-    technologies: ["React", "Node.js", "WebRTC", "Socket.io", "Express", "Tailwind CSS"],
+    category: "Real-Time WebRTC Media Platform",
+    badge: "Full-Stack WebRTC",
+    accentColor: "indigo",
+    windowType: "browser",
+    urlBar: "https://workonmeet.vercel.app",
+    statusBadge: "P2P WebRTC Active",
+    icon: <Server size={24} className="text-indigo-400" />,
+    shortDesc: "Real-time collaborative video meeting & workspace platform delivering sub-100ms peer-to-peer streaming, dynamic room links, and instant chat.",
+    fullDesc: "Engineered workonmeet to solve high-latency media relays by adopting a pure WebRTC peer-to-peer mesh architecture with dynamic STUN/TURN server traversal. Backed by a Node.js and Socket.io signaling server, it handles meeting room creation, ephemeral participant state, and encrypted in-room chat.",
+    architecturePoints: [
+      {
+        title: "Sub-100ms WebRTC Mesh",
+        desc: "Direct peer-to-peer audio, video, and screen sharing streams bypassing media server bottlenecks."
+      },
+      {
+        title: "Signaling & State Machine",
+        desc: "Node.js & Socket.io handling dynamic meeting URLs, room presence, and real-time chat broadcasts."
+      },
+      {
+        title: "Global Production Deployment",
+        desc: "Hosted on Vercel CDN infrastructure ensuring low-latency asset delivery worldwide."
+      }
+    ],
+    technologies: ["React.js", "Node.js", "WebRTC", "Socket.io", "Express.js", "Tailwind CSS"],
     highlights: [
       "Sub-100ms WebRTC peer-to-peer video, audio streaming & screen sharing",
       "Dynamic room creation, invite link generation & participant management",
@@ -20,46 +38,79 @@ const projectsData = [
       "Deployed live on Vercel infrastructure for global access"
     ],
     githubLink: "https://github.com/rahulsoni5670/workonmeet",
-    demoLink: "https://workonmeet.vercel.app/",
-    badge: "Full-stack App"
+    demoLink: "https://workonmeet.vercel.app/"
   },
   {
     id: 'webserver',
     title: "Multi-Model Web Server",
-    category: "Networking & Concurrency",
-    bannerGradient: "from-cyan-600 via-blue-600 to-indigo-600",
-    icon: <Cpu size={28} className="text-cyan-400" />,
-    shortDesc: "High-concurrency Java web server testing Single-threaded, Multi-threaded, and Thread-Pool architectures.",
-    fullDesc: "Built single-threaded, multi-threaded, and thread-pool web servers handling concurrent HTTP client requests. Simulated 1000+ client connections using Java Sockets and custom Runnable tasks to evaluate throughput, memory usage, and latency across concurrency models. Used Java ExecutorService thread pools to prevent resource exhaustion under heavy traffic load.",
-    technologies: ["Java", "Socket Programming", "Concurrency", "ExecutorService", "Multi-Threading", "Networking"],
+    category: "High-Throughput Systems & Networking",
+    badge: "Java Systems",
+    accentColor: "cyan",
+    windowType: "terminal",
+    urlBar: "java -jar WebServer.jar --threads=16 --benchmark=1000",
+    statusBadge: "1000 Sockets Tested",
+    icon: <Cpu size={24} className="text-cyan-400" />,
+    shortDesc: "High-concurrency Java web server evaluating Single-threaded, Multi-threaded, and Thread-Pool architectures under 1,000+ simultaneous client socket loads.",
+    fullDesc: "Engineered high-performance web servers using raw Java Sockets to measure CPU and memory bottlenecks across different concurrency models. Simulated 1,000+ simultaneous client connections with custom Runnable tasks, identifying how Java ExecutorService thread pools prevent thread thrashing and memory exhaustion under extreme traffic loads.",
+    architecturePoints: [
+      {
+        title: "1,000+ Simultaneous Sockets",
+        desc: "Stress-tested concurrent TCP client connections without socket drops or socket leaks."
+      },
+      {
+        title: "ExecutorService Thread Pooling",
+        desc: "Bounded worker thread lifecycle preventing resource exhaustion and CPU thrashing."
+      },
+      {
+        title: "Comparative Architectural Profiling",
+        desc: "Empirical benchmark comparing latency, throughput, and memory consumption across 3 concurrency models."
+      }
+    ],
+    technologies: ["Java", "Socket Programming", "Concurrency", "ExecutorService", "Multi-Threading", "TCP/IP"],
     highlights: [
-      "Benchmark test handling 1000+ simultaneous client socket connections",
-      "Compared performance metrics across Single-Threaded vs Thread-Pool architectures",
+      "Benchmark test handling 1,000+ simultaneous client socket connections",
+      "Compared performance metrics across Single-Threaded vs Multi-Threaded vs Thread-Pool architectures",
       "Implemented non-blocking connection pool limits and thread worker lifecycle management",
-      "Reusable modular client-server network architecture"
+      "Clean modular client-server network architecture with zero external networking dependencies"
     ],
     githubLink: "https://github.com/rahulsoni5670/Webserver",
-    demoLink: null,
-    badge: "Systems & Networking"
+    demoLink: null
   },
   {
     id: 'MedIntel-AI',
     title: "MedIntel-AI",
-    category: "Machine Learning & Web",
-    bannerGradient: "from-purple-600 via-pink-600 to-rose-600",
-    icon: <Sparkles size={28} className="text-amber-400" />,
-    shortDesc: "AI-driven medical intelligence and healthcare diagnostic dashboard providing smart clinical insights.",
-    fullDesc: "Engineered MedIntel-AI, an intelligent healthcare web platform integrating machine learning classification algorithms to assist with medical data analytics, symptom assessment, and diagnostic decision support. Features a responsive practitioner dashboard and secure REST backend endpoints.",
-    technologies: ["Python", "Machine Learning", "React", "Node.js", "Express", "REST API"],
+    category: "Clinical Intelligence & Healthcare Analytics",
+    badge: "AI & Full-Stack",
+    accentColor: "purple",
+    windowType: "dashboard",
+    urlBar: "https://medintel-ai.app/clinical-insights",
+    statusBadge: "ML Diagnostics Online",
+    icon: <Sparkles size={24} className="text-purple-400" />,
+    shortDesc: "AI-driven medical intelligence and healthcare diagnostic dashboard providing clinical insights and symptom-based decision support.",
+    fullDesc: "Engineered MedIntel-AI to assist healthcare practitioners with clinical decision support. Integrates machine learning classification algorithms for patient symptom analysis, backed by a responsive dashboard and secured RESTful endpoints.",
+    architecturePoints: [
+      {
+        title: "Machine Learning Classifier",
+        desc: "Integrated ML models for clinical symptom classification and diagnostic risk estimation."
+      },
+      {
+        title: "Practitioner Analytics UI",
+        desc: "Responsive glassmorphism dashboard visualizing diagnostic insights and patient data."
+      },
+      {
+        title: "Secured REST API",
+        desc: "Modular backend endpoints handling clinical inquiries and formatted diagnostic telemetry."
+      }
+    ],
+    technologies: ["Python", "Machine Learning", "React.js", "Node.js", "Express.js", "RESTful API"],
     highlights: [
       "Integrated AI/ML classification models for clinical symptom analysis",
       "Interactive patient data analytics & diagnostic insights dashboard",
       "Secure RESTful API integration for healthcare query processing",
-      "Responsive glassmorphism UI for intuitive practitioner user experience"
+      "Responsive UI designed for intuitive practitioner user experience"
     ],
     githubLink: "https://github.com/rahulsoni5670/MedIntel-AI",
-    demoLink: null,
-    badge: "AI & HealthTech"
+    demoLink: null
   }
 ];
 
@@ -71,95 +122,122 @@ function Projects() {
       <div className="container-main">
         {/* Section Header */}
         <div className="section-header-center">
-          <div className="section-badge">
-            <FolderGit2 size={16} />
-            <span>PORTFOLIO SHOWCASE</span>
+          <div className="section-badge font-mono">
+            <FolderGit2 size={13} />
+            <span>PRODUCTION &amp; ARCHITECTURAL CODE</span>
           </div>
           <h2 className="section-heading">
-            Featured <span className="gradient-text">Projects</span>
+            Featured <span className="gradient-text">Engineering Projects</span>
           </h2>
           <div className="section-divider"></div>
           <p className="section-subtitle">
-            A selection of software systems, web applications, and AI platforms I've designed and engineered.
+            Case studies of distributed systems, high-concurrency socket architectures, and full-stack web platforms engineered from scratch.
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="projects-grid-container">
+        {/* Detailed Projects Grid */}
+        <div className="projects-showcase-list">
           {projectsData.map((project, idx) => (
             <motion.div
               key={project.id}
-              className={`glass-card project-card-modern project-accent-${idx === 0 ? 'indigo' : idx === 1 ? 'cyan' : 'pink'}`}
-              initial={{ opacity: 0, y: 30 }}
+              className={`project-case-card glass-card project-accent-${project.accentColor}`}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.15 }}
+              transition={{ duration: 0.55, delay: idx * 0.12 }}
             >
-              {/* Visual Card Header Banner */}
-              <div className="project-card-header">
-                <div className="project-icon-box">
-                  {project.icon}
+              {/* Window Frame Mockup Topbar */}
+              <div className="case-window-header font-mono">
+                <div className="case-window-dots">
+                  <span className="window-dot red"></span>
+                  <span className="window-dot yellow"></span>
+                  <span className="window-dot green"></span>
                 </div>
-                <span className="project-badge font-mono">{project.badge}</span>
+                <div className="case-url-bar">
+                  <span className="case-url-text">{project.urlBar}</span>
+                </div>
+                <div className="case-status-indicator">
+                  <Activity size={12} className="text-emerald-400" />
+                  <span className="case-status-label">{project.statusBadge}</span>
+                </div>
               </div>
 
-              <div className="project-card-body">
-                <span className="project-category font-mono">{project.category}</span>
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-short-desc">{project.shortDesc}</p>
+              {/* Card Body */}
+              <div className="case-body">
+                <div className="case-top-meta">
+                  <div className="case-title-row">
+                    <div className="case-icon-box">
+                      {project.icon}
+                    </div>
+                    <div>
+                      <span className="case-category font-mono">{project.category}</span>
+                      <h3 className="case-title">{project.title}</h3>
+                    </div>
+                  </div>
+                  <span className="case-badge-pill font-mono">{project.badge}</span>
+                </div>
 
-                {/* Tech Badges */}
-                <div className="project-tech-tags">
-                  {project.technologies.slice(0, 4).map((tech, tIdx) => (
-                    <span key={tIdx} className="tech-tag font-mono">
+                <p className="case-summary">{project.shortDesc}</p>
+
+                {/* Architecture Highlights Triplets */}
+                <div className="case-architecture-grid">
+                  {project.architecturePoints.map((pt, pIdx) => (
+                    <div key={pIdx} className="arch-point-box font-mono">
+                      <span className="arch-point-title">
+                        <CheckCircle size={13} className="text-emerald-400 inline mr-1" />
+                        {pt.title}
+                      </span>
+                      <p className="arch-point-desc">{pt.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tech Stack Chips */}
+                <div className="case-tech-row font-mono">
+                  {project.technologies.map((tech, tIdx) => (
+                    <span key={tIdx} className="case-tech-tag">
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 4 && (
-                    <span className="tech-tag font-mono more-tag">
-                      +{project.technologies.length - 4}
-                    </span>
-                  )}
                 </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="project-card-footer">
-                <button
-                  onClick={() => setSelectedProject(project)}
-                  className="btn-details"
-                >
-                  <Layers size={16} />
-                  <span>View Details</span>
-                </button>
+                {/* Action Buttons */}
+                <div className="case-footer-actions">
+                  <div className="case-links-group">
+                    {project.demoLink && (
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary case-btn"
+                      >
+                        <ExternalLink size={15} />
+                        <span>Launch Live Demo</span>
+                      </a>
+                    )}
 
-                <div className="project-footer-links">
-                  {project.demoLink && (
-                    <a
-                      href={project.demoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-demo-badge"
-                      title="Live Demo"
-                    >
-                      <ExternalLink size={14} />
-                      <span>Live Demo</span>
-                    </a>
-                  )}
+                    {project.githubLink && (
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-secondary case-btn"
+                      >
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        <span>GitHub Repository</span>
+                      </a>
+                    )}
+                  </div>
 
-                  {project.githubLink && (
-                    <a
-                      href={project.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-github-icon"
-                      title="GitHub Repository"
-                    >
-                      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                      </svg>
-                    </a>
-                  )}
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="btn-details-link font-mono"
+                  >
+                    <Layers size={14} />
+                    <span>View Architecture Spec &bull;</span>
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -197,7 +275,7 @@ function Projects() {
                   <span>Key Architecture Highlights</span>
                 </div>
 
-                <ul className="modal-highlights-list">
+                <ul className="modal-highlights-list font-mono">
                   {selectedProject.highlights.map((item, iIdx) => (
                     <li key={iIdx}>
                       <span className="bullet-dot"></span>
@@ -208,7 +286,7 @@ function Projects() {
 
                 <div className="modal-section-title mt-4">
                   <Code size={18} className="text-cyan-400" />
-                  <span>Technologies & Tools</span>
+                  <span>Technologies &amp; Systems</span>
                 </div>
 
                 <div className="modal-tech-grid">
@@ -228,7 +306,7 @@ function Projects() {
                     rel="noopener noreferrer"
                     className="btn-primary"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={16} />
                     <span>Launch Live Demo</span>
                   </a>
                 )}
@@ -240,7 +318,7 @@ function Projects() {
                     rel="noopener noreferrer"
                     className="btn-secondary"
                   >
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                       <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                     </svg>
                     <span>View GitHub Source</span>

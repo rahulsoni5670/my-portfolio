@@ -8,6 +8,7 @@ import Achievements from './pages/Achievements';
 import Contact from './pages/Contact';
 import Offline from './components/Offline';
 import AmbientBackground from './components/AmbientBackground';
+import RecruiterModal from './components/RecruiterModal';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'dark';
   });
+  const [recruiterModalOpen, setRecruiterModalOpen] = useState(false);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -52,11 +54,21 @@ function App() {
       {/* Offline Alert Banner if network drops */}
       {!isOnline && <Offline />}
 
-      {/* Main Portfolio Header & Single-Page Sections */}
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      {/* Recruiter 30-Second Snapshot Modal */}
+      <RecruiterModal
+        isOpen={recruiterModalOpen}
+        onClose={() => setRecruiterModalOpen(false)}
+      />
+
+      {/* Main Header with Recruiter trigger */}
+      <Navbar
+        theme={theme}
+        toggleTheme={toggleTheme}
+        onOpenRecruiterModal={() => setRecruiterModalOpen(true)}
+      />
 
       <main className="main-content-flow">
-        <Home />
+        <Home onOpenRecruiterModal={() => setRecruiterModalOpen(true)} />
         <About />
         <Projects />
         <Achievements />
