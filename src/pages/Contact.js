@@ -36,9 +36,14 @@ function Contact() {
           <h2 className="section-heading">
             Get In <span className="gradient-text">Touch</span>
           </h2>
+          <div className="section-divider"></div>
           <p className="section-subtitle">
             Whether you have an internship opportunity, a project proposal, or just want to chat about engineering, feel free to drop a message!
           </p>
+          <div className="status-badge" style={{ marginBottom: '1rem' }}>
+            <span className="status-dot-pulse"></span>
+            <span className="status-text">Fast Response Guaranteed &bull; Open for Internships &amp; Roles</span>
+          </div>
         </div>
 
         <div className="contact-layout-grid">

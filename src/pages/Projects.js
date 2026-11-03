@@ -78,6 +78,7 @@ function Projects() {
           <h2 className="section-heading">
             Featured <span className="gradient-text">Projects</span>
           </h2>
+          <div className="section-divider"></div>
           <p className="section-subtitle">
             A selection of software systems, web applications, and AI platforms I've designed and engineered.
           </p>
@@ -88,7 +89,7 @@ function Projects() {
           {projectsData.map((project, idx) => (
             <motion.div
               key={project.id}
-              className="glass-card project-card-modern"
+              className={`glass-card project-card-modern project-accent-${idx === 0 ? 'indigo' : idx === 1 ? 'cyan' : 'pink'}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

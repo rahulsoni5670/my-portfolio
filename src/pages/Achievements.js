@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, ExternalLink, ShieldCheck, CheckCircle2, Star } from 'lucide-react';
+import { Award, ShieldCheck, CheckCircle2, Star, ArrowRight } from 'lucide-react';
 import '../App.css';
 
 const certifications = [
@@ -37,6 +37,7 @@ function Achievements() {
           <h2 className="section-heading">
             Achievements & <span className="gradient-text">Certifications</span>
           </h2>
+          <div className="section-divider"></div>
           <p className="section-subtitle">
             Industry and platform-verified certifications demonstrating algorithm mastery and software proficiency.
           </p>
@@ -47,7 +48,7 @@ function Achievements() {
           {certifications.map((item, idx) => (
             <motion.div
               key={idx}
-              className="glass-card achievement-card"
+              className="glass-card achievement-card achievement-card-glow"
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -58,7 +59,12 @@ function Achievements() {
                   <ShieldCheck size={18} className="text-emerald-400" />
                   <span>{item.issuer} Verified</span>
                 </div>
-                <Star size={18} className="text-amber-400 fill-amber-400/20" />
+                <motion.div
+                  animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Star size={20} className="text-amber-400 fill-amber-400/30" />
+                </motion.div>
               </div>
 
               <h3 className="achievement-card-title">{item.title}</h3>
@@ -80,7 +86,7 @@ function Achievements() {
                   className="btn-cert-link"
                 >
                   <span>Verify Credential</span>
-                  <ExternalLink size={16} />
+                  <ArrowRight size={16} />
                 </a>
               </div>
             </motion.div>
