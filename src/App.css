@@ -2826,9 +2826,15 @@
    LIGHT MODE COLOR HARMONIZATION (Fix Blackish UI Elements in Light Theme)
    ========================================================================== */
 
-/* 1. Projects Showcase Light Mode (Fixes blackish window header & arch boxes) */
+/* 1. Projects Showcase Light Mode (Fixes blackish window header, boxes & tags) */
+.light-mode .project-case-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05) !important;
+}
+
 .light-mode .case-window-header {
-  background: #f1f5f9 !important;
+  background: #f8fafc !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
@@ -2841,8 +2847,40 @@
   color: #475569 !important;
 }
 
+.light-mode .case-status-indicator svg,
+.light-mode .arch-point-title svg {
+  color: #059669 !important;
+}
+
+.light-mode .case-status-label {
+  color: #059669 !important;
+}
+
+.light-mode .case-icon-box {
+  background: rgba(79, 70, 229, 0.08) !important;
+  border: 1px solid rgba(79, 70, 229, 0.2) !important;
+}
+
+.light-mode .case-badge-pill {
+  background: rgba(79, 70, 229, 0.08) !important;
+  border: 1px solid rgba(79, 70, 229, 0.25) !important;
+  color: #4f46e5 !important;
+}
+
+.light-mode .case-category {
+  color: #0284c7 !important;
+}
+
+.light-mode .case-title {
+  color: #0f172a !important;
+}
+
+.light-mode .case-summary {
+  color: #334155 !important;
+}
+
 .light-mode .arch-point-box {
-  background: #f1f5f9 !important;
+  background: #f8fafc !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
 }
@@ -2861,12 +2899,20 @@
   color: #334155 !important;
 }
 
-.light-mode .case-summary {
-  color: #334155 !important;
+.light-mode .case-footer-actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
-.light-mode .case-title {
+.light-mode .case-btn.btn-secondary {
+  background: #f8fafc !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
   color: #0f172a !important;
+}
+
+.light-mode .case-btn.btn-secondary:hover {
+  background: #f1f5f9 !important;
+  border-color: rgba(79, 70, 229, 0.4) !important;
+  color: #4f46e5 !important;
 }
 
 .light-mode .btn-details-link {
@@ -3136,6 +3182,25 @@
 }
 
 /* 7. Modal Details Dialog Light Mode */
+.light-mode .modal-backdrop,
+.light-mode .recruiter-modal-backdrop {
+  background: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.light-mode .modal-close-btn,
+.light-mode .recruiter-modal-close {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #0f172a !important;
+}
+
+.light-mode .modal-close-btn:hover,
+.light-mode .recruiter-modal-close:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
 .light-mode .modal-content {
   background: #ffffff !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
