@@ -116,11 +116,6 @@ body {
   50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.7), 0 0 80px rgba(124, 58, 237, 0.3), 0 0 100px rgba(0, 212, 255, 0.1); }
 }
 
-@keyframes border-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
