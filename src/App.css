@@ -2820,3 +2820,360 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
 }
+
+
+/* ==========================================================================
+   LIGHT MODE COLOR HARMONIZATION (Fix Blackish UI Elements in Light Theme)
+   ========================================================================== */
+
+/* 1. Projects Showcase Light Mode (Fixes blackish window header & arch boxes) */
+.light-mode .case-window-header {
+  background: #f1f5f9 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .case-url-bar {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .case-url-text {
+  color: #475569 !important;
+}
+
+.light-mode .arch-point-box {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
+
+.light-mode .arch-point-title {
+  color: #0f172a !important;
+}
+
+.light-mode .arch-point-desc {
+  color: #475569 !important;
+}
+
+.light-mode .case-tech-tag {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #334155 !important;
+}
+
+.light-mode .case-summary {
+  color: #334155 !important;
+}
+
+.light-mode .case-title {
+  color: #0f172a !important;
+}
+
+.light-mode .btn-details-link {
+  color: #4f46e5 !important;
+}
+
+.light-mode .btn-details-link:hover {
+  color: #3730a3 !important;
+}
+
+/* 2. Bento Grid & Architecture Diagram Light Mode */
+.light-mode .bento-architecture-diagram {
+  background: #f8fafc !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .arch-node-badge {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #0f172a !important;
+}
+
+.light-mode .arch-node-badge.highlight {
+  background: rgba(79, 70, 229, 0.12) !important;
+  border-color: #6366f1 !important;
+  color: #4338ca !important;
+}
+
+.light-mode .arch-node-sub {
+  color: #64748b !important;
+}
+
+.light-mode .coursework-box {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .coursework-title {
+  color: #64748b !important;
+}
+
+.light-mode .c-tag {
+  background: rgba(2, 132, 199, 0.1) !important;
+  border: 1px solid rgba(2, 132, 199, 0.25) !important;
+  color: #0284c7 !important;
+}
+
+.light-mode .hr-cert-item {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .cert-name {
+  color: #0f172a !important;
+}
+
+.light-mode .cert-meta {
+  color: #475569 !important;
+}
+
+.light-mode .bento-title {
+  color: #0f172a !important;
+}
+
+.light-mode .bento-text,
+.light-mode .bento-bullet-list li,
+.light-mode .tiet-desc {
+  color: #334155 !important;
+}
+
+.light-mode .tiet-degree-line {
+  color: #0f172a !important;
+}
+
+.light-mode .tech-matrix-header h4,
+.light-mode .tech-matrix-name {
+  color: #0f172a !important;
+}
+
+.light-mode .tech-matrix-detail {
+  color: #475569 !important;
+}
+
+/* 3. Hero Section & Terminal HUD Light Mode */
+.light-mode .hero-headline-pro,
+.light-mode .hero-name-pro {
+  color: #0f172a !important;
+}
+
+.light-mode .hero-bio-pro {
+  color: #475569 !important;
+}
+
+.light-mode .hero-mini-social {
+  color: #475569 !important;
+}
+
+.light-mode .hero-mini-social:hover {
+  color: #4f46e5 !important;
+}
+
+.light-mode .terminal-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 45px -10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .terminal-titlebar {
+  background: #f1f5f9 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .terminal-tab {
+  color: #64748b !important;
+}
+
+.light-mode .terminal-tab.active {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #0f172a !important;
+}
+
+.light-mode .terminal-screen {
+  background: #f8fafc !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-mode .cmd-pill {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #334155 !important;
+}
+
+.light-mode .cmd-pill:hover,
+.light-mode .cmd-pill.active {
+  background: rgba(79, 70, 229, 0.1) !important;
+  border-color: #6366f1 !important;
+  color: #4f46e5 !important;
+}
+
+.light-mode .terminal-executed-cmd {
+  color: #0f172a !important;
+}
+
+.light-mode .terminal-out-line {
+  color: #475569 !important;
+}
+
+.light-mode .hero-credibility-bar {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-mode .cred-value {
+  color: #0f172a !important;
+}
+
+.light-mode .cred-label {
+  color: #64748b !important;
+}
+
+/* 4. Achievements & Credentials Light Mode */
+.light-mode .achievement-card-title {
+  color: #0f172a !important;
+}
+
+.light-mode .achievement-card-desc {
+  color: #475569 !important;
+}
+
+.light-mode .achievement-validated-box {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+}
+
+.light-mode .academic-highlight-banner {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .banner-title {
+  color: #0f172a !important;
+}
+
+.light-mode .banner-subtitle {
+  color: #475569 !important;
+}
+
+/* 5. Contact Section Light Mode */
+.light-mode .contact-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.light-mode .contact-label {
+  color: #64748b !important;
+}
+
+.light-mode .contact-value {
+  color: #0f172a !important;
+}
+
+.light-mode .form-card-title {
+  color: #0f172a !important;
+}
+
+.light-mode .form-input-modern {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: #0f172a !important;
+}
+
+.light-mode .form-input-modern:focus {
+  background: #ffffff !important;
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
+}
+
+/* 6. Recruiter Modal Light Mode */
+.light-mode .recruiter-modal-container {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 25px 80px -10px rgba(0, 0, 0, 0.25) !important;
+}
+
+.light-mode .recruiter-candidate-card {
+  background: rgba(79, 70, 229, 0.06) !important;
+  border: 1px solid rgba(79, 70, 229, 0.2) !important;
+}
+
+.light-mode .recruiter-candidate-name {
+  color: #0f172a !important;
+}
+
+.light-mode .recruiter-candidate-role {
+  color: #334155 !important;
+}
+
+.light-mode .recruiter-section-heading {
+  color: #0f172a !important;
+}
+
+.light-mode .recruiter-pillar-card {
+  background: #f8fafc !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.light-mode .pillar-text h5 {
+  color: #0f172a !important;
+}
+
+.light-mode .pillar-text p {
+  color: #475569 !important;
+}
+
+.light-mode .recruiter-tag {
+  background: #f1f5f9 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #334155 !important;
+}
+
+.light-mode .recruiter-tag.highlighted {
+  background: rgba(79, 70, 229, 0.1) !important;
+  border-color: rgba(79, 70, 229, 0.3) !important;
+  color: #4f46e5 !important;
+}
+
+/* 7. Modal Details Dialog Light Mode */
+.light-mode .modal-content {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+.light-mode .modal-title {
+  color: #0f172a !important;
+}
+
+.light-mode .modal-description {
+  color: #334155 !important;
+}
+
+.light-mode .modal-section-title {
+  color: #0f172a !important;
+}
+
+.light-mode .modal-highlights-list li {
+  color: #475569 !important;
+}
+
+.light-mode .tech-badge-full {
+  background: rgba(79, 70, 229, 0.1) !important;
+  border: 1px solid rgba(79, 70, 229, 0.25) !important;
+  color: #4f46e5 !important;
+}
+
+/* 8. Soft Skills Badges Light Mode */
+.light-mode .soft-skill-badge {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #334155 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+}
+
+.light-mode .soft-skill-badge:hover {
+  background: #f8fafc !important;
+  border-color: rgba(79, 70, 229, 0.35) !important;
+  color: #4f46e5 !important;
+}
