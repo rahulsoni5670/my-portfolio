@@ -98,11 +98,21 @@ function Home({ onOpenRecruiterModal }) {
             transition={{ duration: 0.6 }}
           >
             <div className="hero-identity-row">
-              <div className="hero-avatar-mini-wrapper">
+              <div
+                className="hero-avatar-mini-wrapper"
+                style={{
+                  animation: 'gentle-float 4.5s ease-in-out infinite',
+                  transform: 'none'
+                }}
+              >
                 <img
                   src={userImage}
                   alt="Rahul Soni"
                   className="hero-avatar-mini"
+                  style={{
+                    animation: 'none',
+                    transform: 'none'
+                  }}
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = "https://placehold.co/120x120/1e1b4b/a5b4fc?text=RS";
